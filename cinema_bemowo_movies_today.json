@@ -1,0 +1,268 @@
+[
+  {
+    "title": "Amator",
+    "genre": "Akcja, Thriller",
+    "length": "123 min",
+    "type": "2D",
+    "showtimes": [
+      "19:00",
+      "20:10",
+      "21:50"
+    ],
+    "image_url": "",
+    "language": "EN · (FILM Z NAPISAMI · PL)",
+    "date": "2025-04-13"
+  },
+  {
+    "title": "Przyjmij/Odrzuć",
+    "genre": "Thriller",
+    "length": "100 min",
+    "type": "2D",
+    "showtimes": [
+      "19:10",
+      "21:30"
+    ],
+    "image_url": "",
+    "language": "EN · (FILM Z NAPISAMI · PL)",
+    "date": "2025-04-13"
+  },
+  {
+    "title": "Minecraft: Film",
+    "genre": "Przygodowy, Fantasy",
+    "length": "99 min",
+    "type": "",
+    "showtimes": [
+      "17:40",
+      "18:50",
+      "18:10",
+      "20:00",
+      "21:10"
+    ],
+    "image_url": "",
+    "language": "",
+    "date": "2025-04-13"
+  },
+  {
+    "title": "Kaiju No. 8: Mission Recon",
+    "genre": "Przygodowy, Animowany",
+    "length": "119 min",
+    "type": "2D",
+    "showtimes": [
+      "18:20"
+    ],
+    "image_url": "",
+    "language": "JAP · (FILM Z NAPISAMI · PL)",
+    "date": "2025-04-13"
+  },
+  {
+    "title": "100 dni do matury - wersja rozszerzona",
+    "genre": "Komedia",
+    "length": "122 min",
+    "type": "2D",
+    "showtimes": [
+      "18:30"
+    ],
+    "image_url": "",
+    "language": "ORYGINALNA WERSJA:PL · (BEZ NAPISÓW)",
+    "date": "2025-04-13"
+  },
+  {
+    "title": "21.37",
+    "genre": "Dokument",
+    "length": "80 min",
+    "type": "2D",
+    "showtimes": [
+      "17:50"
+    ],
+    "image_url": "",
+    "language": "ORYGINALNA WERSJA:PL · (BEZ NAPISÓW)",
+    "date": "2025-04-13"
+  },
+  {
+    "title": "Apetyt na więcej. La Cocina",
+    "genre": "Dramat",
+    "length": "139 min",
+    "type": "2D",
+    "showtimes": [
+      "20:30"
+    ],
+    "image_url": "",
+    "language": "ES · (FILM Z NAPISAMI · PL)",
+    "date": "2025-04-13"
+  },
+  {
+    "title": "Fachowiec",
+    "genre": "Akcja, Przygodowy",
+    "length": "116 min",
+    "type": "2D",
+    "showtimes": [
+      "18:40",
+      "21:20"
+    ],
+    "image_url": "",
+    "language": "EN · (FILM Z NAPISAMI · PL)",
+    "date": "2025-04-13"
+  },
+  {
+    "title": "Mickey 17",
+    "genre": "Przygodowy, Fantasy, Sci-Fi",
+    "length": "139 min",
+    "type": "2D",
+    "showtimes": [
+      "21:00"
+    ],
+    "image_url": "",
+    "language": "EN · (FILM Z NAPISAMI · PL)",
+    "date": "2025-04-13"
+  },
+  {
+    "title": "Nowokaina",
+    "genre": "Akcja, Czarna komedia",
+    "length": "105 min",
+    "type": "2D",
+    "showtimes": [
+      "21:50"
+    ],
+    "image_url": "",
+    "language": "EN · (FILM Z NAPISAMI · PL)",
+    "date": "2025-04-13"
+  },
+  {
+    "title": "Screamboat. Krwawa mysz",
+    "genre": "Horror",
+    "length": "102 min",
+    "type": "2D",
+    "showtimes": [
+      "19:50",
+      "21:15",
+      "22:15"
+    ],
+    "image_url": "",
+    "language": "EN · (FILM Z NAPISAMI · PL)",
+    "date": "2025-04-13"
+  },
+  {
+    "title": "Skrzyżowanie",
+    "genre": "Dramat",
+    "length": "99 min",
+    "type": "2D",
+    "showtimes": [
+      "19:30"
+    ],
+    "image_url": "",
+    "language": "ORYGINALNA WERSJA:PL · (BEZ NAPISÓW)",
+    "date": "2025-04-13"
+  },
+  {
+    "title": "Wujek Foliarz",
+    "genre": "Komedia",
+    "length": "88 min",
+    "type": "2D",
+    "showtimes": [
+      "22:20"
+    ],
+    "image_url": "",
+    "language": "ORYGINALNA WERSJA:PL · (BEZ NAPISÓW)",
+    "date": "2025-04-13"
+  },
+  {
+    "title": "Grzesznicy",
+    "genre": "Horror",
+    "length": "131 min",
+    "type": "",
+    "showtimes": [
+      "Czwkwi 17"
+    ],
+    "image_url": "",
+    "language": "",
+    "date": "2025-04-13"
+  },
+  {
+    "title": "Niesamowite przygody skarpetek",
+    "genre": "Animowany, Familijny",
+    "length": "55 min",
+    "type": "",
+    "showtimes": [
+      "Czwkwi 17"
+    ],
+    "image_url": "",
+    "language": "",
+    "date": "2025-04-13"
+  },
+  {
+    "title": "Gwiezdne wojny: Część III - Zemsta Sithów. 20-lecie",
+    "genre": "Przygodowy, Sci-Fi",
+    "length": "140 min",
+    "type": "",
+    "showtimes": [
+      "Ponkwi 21",
+      "Wtkwi 22",
+      "Śrkwi 23",
+      "Czwkwi 24",
+      "Ptkwi 25",
+      "Sbkwi 26",
+      "Niekwi 27"
+    ],
+    "image_url": "",
+    "language": "",
+    "date": "2025-04-13"
+  },
+  {
+    "title": "Księgowy 2",
+    "genre": "Akcja, Dramat",
+    "length": "124 min",
+    "type": "",
+    "showtimes": [
+      "Ptkwi 25",
+      "Sbkwi 26",
+      "Niekwi 27"
+    ],
+    "image_url": "",
+    "language": "",
+    "date": "2025-04-13"
+  },
+  {
+    "title": "Until Dawn",
+    "genre": "Horror",
+    "length": "103 min",
+    "type": "",
+    "showtimes": [
+      "Ptkwi 25",
+      "Sbkwi 26",
+      "Niekwi 27"
+    ],
+    "image_url": "",
+    "language": "",
+    "date": "2025-04-13"
+  },
+  {
+    "title": "Thunderbolts*",
+    "genre": "Akcja, Przygodowy, Sci-Fi",
+    "length": "126 min",
+    "type": "",
+    "showtimes": [
+      "Śrkwi 30",
+      "Czwmaj 1",
+      "Ptmaj 2",
+      "Sbmaj 3",
+      "Niemaj 4"
+    ],
+    "image_url": "",
+    "language": "",
+    "date": "2025-04-13"
+  },
+  {
+    "title": "Peppa poznaje nowego członka rodziny – pokazy specjalne",
+    "genre": "Animowany, Familijny",
+    "length": "65 min",
+    "type": "",
+    "showtimes": [
+      "Ptmaj 30",
+      "Sbmaj 31",
+      "Niecze 1"
+    ],
+    "image_url": "",
+    "language": "",
+    "date": "2025-04-13"
+  }
+]
