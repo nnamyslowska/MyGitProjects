@@ -1,9 +1,5 @@
-# hello-world
-Hello World repository for Git tutorial
-This is an example repository for the Git tutoial on https://www.w3schools.com
+# CineMatch
 
-This repository is built step by step in the tutorial.
+CineMatch is a web application that helps users discover movies currently showing in Cinema City cinemas and connect with other users who have similar movie preferences. The app combines real-time movie showtime data with a social matching feature to make movie nights more enjoyable and social.
 
-Some new text
 
-another change
