@@ -58,29 +58,37 @@
   </style>
 </head>
 <body>
-  <form class="registration-form" action="/register" method="POST">
+  <form class="registration-form" method="POST" action="{{ url_for('register') }}">
     <h2>Register</h2>
+    {{ form.hidden_tag() }}
+
     <div class="form-group">
-      <label for="username">Username</label>
-      <input type="text" id="username" name="username" required>
+        {{ form.username.label }}
+        {{ form.username(class="form-control", placeholder="Enter your username") }}
     </div>
+
     <div class="form-group">
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required>
+        {{ form.email.label }}
+        {{ form.email(class="form-control", placeholder="Enter your email") }}
     </div>
+
     <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" required>
+        {{ form.password.label }}
+        {{ form.password(class="form-control", placeholder="Enter your password") }}
     </div>
+
     <div class="form-group">
-      <label for="confirm-password">Confirm Password</label>
-      <input type="password" id="confirm-password" name="confirm_password" required>
+        {{ form.repeat_password.label }}
+        {{ form.repeat_password(class="form-control", placeholder="Re-enter your password") }}
     </div>
+
     <div class="form-group">
-      <button type="submit">Register</button>
+        {{ form.submit(class="btn btn-primary") }}
     </div>
+
     <p>Already have an account? <a href="/login">Login here</a></p>
     <p><a href="/">Back to Home</a></p>
   </form>
+
 </body>
 </html>
