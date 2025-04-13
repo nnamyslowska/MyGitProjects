@@ -1,268 +1,517 @@
 [
   {
     "title": "AMATOR",
-    "genre": "Akcja, Thriller ",
+    "genre": "Akcja, Thriller",
     "length": "123 min",
-    "type": "2D",
+    "type": [
+      "2D"
+    ],
     "showtimes": [
+      "10:30",
+      "13:20",
+      "16:10",
       "19:00",
-      "20:10",
+      "20:20",
       "21:50"
     ],
-    "image_url": "https://www.cinema-city.pl/xmedia/img/10103/rating/N_A.png",
-    "language": "EN · (FILM Z NAPISAMI · PL)",
+    "image_url": "https://www.cinema-city.pl/xmedia-cw/repo/feats/posters/6965S2R.jpg",
+    "language": [
+      "EN · (FILM Z NAPISAMI · PL)"
+    ],
     "date": "2025-04-13"
   },
   {
     "title": "PRZYJMIJ/ODRZUĆ",
-    "genre": "Thriller ",
+    "genre": "Thriller",
     "length": "100 min",
-    "type": "2D",
-    "showtimes": [
-      "19:10",
-      "21:30"
+    "type": [
+      "2D"
     ],
-    "image_url": "https://www.cinema-city.pl/xmedia/img/10103/rating/N_A.png",
-    "language": "EN · (FILM Z NAPISAMI · PL)",
+    "showtimes": [
+      "15:20",
+      "17:45",
+      "20:10",
+      "22:10"
+    ],
+    "image_url": "https://www.cinema-city.pl/xmedia-cw/repo/feats/posters/7003S2R.jpg",
+    "language": [
+      "EN · (FILM Z NAPISAMI · PL)"
+    ],
     "date": "2025-04-13"
   },
   {
     "title": "MINECRAFT: FILM",
-    "genre": "Przygodowy, Fantasy ",
+    "genre": "Przygodowy, Fantasy",
     "length": "99 min",
-    "type": "2D",
-    "showtimes": [
-      "17:40",
-      "18:50",
-      "18:10",
-      "20:00",
-      "21:10"
+    "type": [
+      "2D",
+      "3D"
     ],
-    "image_url": "https://www.cinema-city.pl/xmedia/img/10103/rating/N_A.png",
-    "language": "EN · (FILM Z DUBBINGIEM · PL)",
+    "showtimes": [
+      "10:00",
+      "10:30",
+      "11:40",
+      "12:30",
+      "13:00",
+      "14:10",
+      "15:00",
+      "15:30",
+      "16:40",
+      "17:30",
+      "18:00",
+      "19:10",
+      "11:00",
+      "13:30",
+      "16:00",
+      "18:30",
+      "17:10",
+      "20:00",
+      "21:45"
+    ],
+    "image_url": "https://www.cinema-city.pl/xmedia-cw/repo/feats/posters/6809D2R.jpg",
+    "language": [
+      "EN · (FILM Z DUBBINGIEM · PL)",
+      "EN · (FILM Z NAPISAMI · PL)"
+    ],
     "date": "2025-04-13"
   },
   {
     "title": "KAIJU NO. 8: MISSION RECON",
-    "genre": "Przygodowy, Animowany ",
+    "genre": "Przygodowy, Animowany",
     "length": "119 min",
-    "type": "2D",
+    "type": [
+      "2D"
+    ],
     "showtimes": [
       "18:20"
     ],
-    "image_url": "https://www.cinema-city.pl/xmedia/img/10103/rating/N_A.png",
-    "language": "JAP · (FILM Z NAPISAMI · PL)",
+    "image_url": "https://www.cinema-city.pl/xmedia-cw/repo/feats/posters/7253S2R.jpg",
+    "language": [
+      "JAP · (FILM Z NAPISAMI · PL)"
+    ],
     "date": "2025-04-13"
   },
   {
-    "title": "100 DNI DO MATURY - WERSJA ROZSZERZONA",
-    "genre": "Komedia ",
-    "length": "122 min",
-    "type": "2D",
-    "showtimes": [
-      "18:30"
+    "title": "BEZCENNY PAKUNEK",
+    "genre": "Animowany, Dramat",
+    "length": "81 min",
+    "type": [
+      "2D"
     ],
-    "image_url": "https://www.cinema-city.pl/xmedia/img/10103/rating/N_A.png",
-    "language": "ORYGINALNA WERSJA:PL · (BEZ NAPISÓW)",
+    "showtimes": [
+      "18:10"
+    ],
+    "image_url": "https://www.cinema-city.pl/xmedia-cw/repo/feats/posters/6983S2R.jpg",
+    "language": [
+      "FR · (FILM Z NAPISAMI · PL)"
+    ],
+    "date": "2025-04-13"
+  },
+  {
+    "title": "100 DNI DO MATURY",
+    "genre": "Komedia",
+    "length": "110 min",
+    "type": [
+      "2D"
+    ],
+    "showtimes": [
+      "11:15",
+      "13:50",
+      "16:40"
+    ],
+    "image_url": "https://www.cinema-city.pl/xmedia-cw/repo/feats/posters/7069O2R.jpg",
+    "language": [
+      "ORYGINALNA WERSJA:PL · (BEZ NAPISÓW)"
+    ],
     "date": "2025-04-13"
   },
   {
     "title": "21.37",
-    "genre": "Dokument ",
+    "genre": "Dokument",
     "length": "80 min",
-    "type": "2D",
-    "showtimes": [
-      "17:50"
+    "type": [
+      "2D"
     ],
-    "image_url": "https://www.cinema-city.pl/xmedia/img/10103/rating/N_A.png",
-    "language": "ORYGINALNA WERSJA:PL · (BEZ NAPISÓW)",
+    "showtimes": [
+      "12:10"
+    ],
+    "image_url": "https://www.cinema-city.pl/xmedia-cw/repo/feats/posters/7209O2R.jpg",
+    "language": [
+      "ORYGINALNA WERSJA:PL · (BEZ NAPISÓW)"
+    ],
     "date": "2025-04-13"
   },
   {
-    "title": "APETYT NA WIĘCEJ. LA COCINA",
-    "genre": "Dramat ",
-    "length": "139 min",
-    "type": "2D",
-    "showtimes": [
-      "20:30"
+    "title": "BASIA. RADZĘ SOBIE!",
+    "genre": "Animowany, Familijny",
+    "length": "53 min",
+    "type": [
+      "2D"
     ],
-    "image_url": "https://www.cinema-city.pl/xmedia/img/10103/rating/15_.png",
-    "language": "ES · (FILM Z NAPISAMI · PL)",
+    "showtimes": [
+      "10:30"
+    ],
+    "image_url": "https://www.cinema-city.pl/xmedia-cw/repo/feats/posters/7058D2R.jpg",
+    "language": [
+      "(FILM Z DUBBINGIEM · PL)"
+    ],
+    "date": "2025-04-13"
+  },
+  {
+    "title": "BOGINI PARTENOPE",
+    "genre": "Dramat",
+    "length": "137 min",
+    "type": [
+      "2D"
+    ],
+    "showtimes": [
+      "12:15"
+    ],
+    "image_url": "https://www.cinema-city.pl/xmedia-cw/repo/feats/posters/6957S2R.jpg",
+    "language": [
+      "IT · (FILM Z NAPISAMI · PL)"
+    ],
+    "date": "2025-04-13"
+  },
+  {
+    "title": "BRIDGET JONES: SZALEJĄC ZA FACETEM",
+    "genre": "Komedia, Romantyczny",
+    "length": "124 min",
+    "type": [
+      "2D"
+    ],
+    "showtimes": [
+      "19:40"
+    ],
+    "image_url": "https://www.cinema-city.pl/xmedia-cw/repo/feats/posters/6724S2R.jpg",
+    "language": [
+      "EN · (FILM Z NAPISAMI · PL)"
+    ],
+    "date": "2025-04-13"
+  },
+  {
+    "title": "ELFY ROZRABIAJĄ",
+    "genre": "Animowany, Komedia, Familijny, Fantasy",
+    "length": "76 min",
+    "type": [
+      "2D"
+    ],
+    "showtimes": [
+      "10:00",
+      "12:00"
+    ],
+    "image_url": "https://www.cinema-city.pl/xmedia-cw/repo/feats/posters/7165D2R.jpg",
+    "language": [
+      "(FILM Z DUBBINGIEM · PL)"
+    ],
     "date": "2025-04-13"
   },
   {
     "title": "FACHOWIEC",
-    "genre": "Akcja, Przygodowy ",
+    "genre": "Akcja, Przygodowy",
     "length": "116 min",
-    "type": "2D",
-    "showtimes": [
-      "18:40",
-      "21:20"
+    "type": [
+      "2D"
     ],
-    "image_url": "https://www.cinema-city.pl/xmedia/img/10103/rating/N_A.png",
-    "language": "EN · (FILM Z NAPISAMI · PL)",
+    "showtimes": [
+      "14:10",
+      "16:50",
+      "19:30",
+      "20:50"
+    ],
+    "image_url": "https://www.cinema-city.pl/xmedia-cw/repo/feats/posters/7079S2R.jpg",
+    "language": [
+      "EN · (FILM Z NAPISAMI · PL)"
+    ],
+    "date": "2025-04-13"
+  },
+  {
+    "title": "FLOW",
+    "genre": "Animowany",
+    "length": "85 min",
+    "type": [
+      "2D"
+    ],
+    "showtimes": [
+      "10:45"
+    ],
+    "image_url": "https://www.cinema-city.pl/xmedia-cw/repo/feats/posters/6949D2R.jpg",
+    "language": [
+      "(FILM Z DUBBINGIEM · PL)"
+    ],
+    "date": "2025-04-13"
+  },
+  {
+    "title": "FREDDY - PUDEL NIE Z TEJ ZIEMI",
+    "genre": "Przygodowy, Animowany, Komedia",
+    "length": "98 min",
+    "type": [
+      "2D"
+    ],
+    "showtimes": [
+      "11:40"
+    ],
+    "image_url": "https://www.cinema-city.pl/xmedia-cw/repo/feats/posters/6705D2R.jpg",
+    "language": [
+      "(FILM Z DUBBINGIEM · PL)"
+    ],
     "date": "2025-04-13"
   },
   {
     "title": "MICKEY 17",
-    "genre": "Przygodowy, Fantasy, Sci-Fi ",
+    "genre": "Przygodowy, Fantasy, Sci-Fi",
     "length": "139 min",
-    "type": "2D",
-    "showtimes": [
-      "21:00"
+    "type": [
+      "2D"
     ],
-    "image_url": "https://www.cinema-city.pl/xmedia/img/10103/rating/N_A.png",
-    "language": "EN · (FILM Z NAPISAMI · PL)",
-    "date": "2025-04-13"
-  },
-  {
-    "title": "NOWOKAINA",
-    "genre": "Akcja, Czarna komedia ",
-    "length": "105 min",
-    "type": "2D",
     "showtimes": [
-      "21:50"
+      "14:00",
+      "20:15"
     ],
-    "image_url": "https://www.cinema-city.pl/xmedia/img/10103/rating/N_A.png",
-    "language": "EN · (FILM Z NAPISAMI · PL)",
-    "date": "2025-04-13"
-  },
-  {
-    "title": "SCREAMBOAT. KRWAWA MYSZ",
-    "genre": "Horror ",
-    "length": "102 min",
-    "type": "2D",
-    "showtimes": [
-      "19:50",
-      "21:15",
-      "22:15"
+    "image_url": "https://www.cinema-city.pl/xmedia-cw/repo/feats/posters/6905S2R.jpg",
+    "language": [
+      "EN · (FILM Z NAPISAMI · PL)"
     ],
-    "image_url": "https://www.cinema-city.pl/xmedia/img/10103/rating/N_A.png",
-    "language": "EN · (FILM Z NAPISAMI · PL)",
-    "date": "2025-04-13"
-  },
-  {
-    "title": "SKRZYŻOWANIE",
-    "genre": "Dramat ",
-    "length": "99 min",
-    "type": "2D",
-    "showtimes": [
-      "19:30"
-    ],
-    "image_url": "https://www.cinema-city.pl/xmedia/img/10103/rating/N_A.png",
-    "language": "ORYGINALNA WERSJA:PL · (BEZ NAPISÓW)",
-    "date": "2025-04-13"
-  },
-  {
-    "title": "WUJEK FOLIARZ",
-    "genre": "Komedia ",
-    "length": "88 min",
-    "type": "2D",
-    "showtimes": [
-      "22:20"
-    ],
-    "image_url": "https://www.cinema-city.pl/xmedia/img/10103/rating/N_A.png",
-    "language": "ORYGINALNA WERSJA:PL · (BEZ NAPISÓW)",
-    "date": "2025-04-13"
-  },
-  {
-    "title": "GRZESZNICY",
-    "genre": "Horror ",
-    "length": "131 min",
-    "type": "",
-    "showtimes": [
-      "CZW\nKWI 17"
-    ],
-    "image_url": "https://www.cinema-city.pl/xmedia/img/10103/rating/N_A.png",
-    "language": "",
     "date": "2025-04-13"
   },
   {
     "title": "NIESAMOWITE PRZYGODY SKARPETEK",
-    "genre": "Animowany, Familijny ",
+    "genre": "Animowany, Familijny",
     "length": "55 min",
-    "type": "",
-    "showtimes": [
-      "CZW\nKWI 17"
+    "type": [
+      "2D"
     ],
-    "image_url": "https://www.cinema-city.pl/xmedia/img/10103/rating/5_.png",
-    "language": "",
+    "showtimes": [
+      "10:20",
+      "12:00",
+      "13:40"
+    ],
+    "image_url": "https://www.cinema-city.pl/xmedia-cw/repo/feats/posters/7251D2R.jpg",
+    "language": [
+      "(FILM Z DUBBINGIEM · PL)"
+    ],
+    "date": "2025-04-13"
+  },
+  {
+    "title": "NOSFERATU",
+    "genre": "Horror",
+    "length": "132 min",
+    "type": [
+      "2D"
+    ],
+    "showtimes": [
+      "12:50"
+    ],
+    "image_url": "https://www.cinema-city.pl/xmedia-cw/repo/feats/posters/6643S2R.jpg",
+    "language": [
+      "EN · (FILM Z NAPISAMI · PL)"
+    ],
+    "date": "2025-04-13"
+  },
+  {
+    "title": "NOWOKAINA",
+    "genre": "Akcja, Czarna komedia",
+    "length": "105 min",
+    "type": [
+      "2D"
+    ],
+    "showtimes": [
+      "21:00"
+    ],
+    "image_url": "https://www.cinema-city.pl/xmedia-cw/repo/feats/posters/7042S2R.jpg",
+    "language": [
+      "EN · (FILM Z NAPISAMI · PL)"
+    ],
+    "date": "2025-04-13"
+  },
+  {
+    "title": "OPERACJA MALDOROR",
+    "genre": "Thriller",
+    "length": "155 min",
+    "type": [
+      "2D"
+    ],
+    "showtimes": [
+      "19:15"
+    ],
+    "image_url": "https://www.cinema-city.pl/xmedia-cw/repo/feats/posters/7207S2R.jpg",
+    "language": [
+      "FR · (FILM Z NAPISAMI · PL)"
+    ],
+    "date": "2025-04-13"
+  },
+  {
+    "title": "QUEER",
+    "genre": "Dramat",
+    "length": "137 min",
+    "type": [
+      "2D"
+    ],
+    "showtimes": [
+      "15:15"
+    ],
+    "image_url": "https://www.cinema-city.pl/xmedia-cw/repo/feats/posters/7134S2R.jpg",
+    "language": [
+      "FR · (FILM Z NAPISAMI · PL)"
+    ],
+    "date": "2025-04-13"
+  },
+  {
+    "title": "SCREAMBOAT. KRWAWA MYSZ",
+    "genre": "Horror",
+    "length": "102 min",
+    "type": [
+      "2D"
+    ],
+    "showtimes": [
+      "15:45",
+      "20:50"
+    ],
+    "image_url": "https://www.cinema-city.pl/xmedia-cw/repo/feats/posters/7233S2R.jpg",
+    "language": [
+      "EN · (FILM Z NAPISAMI · PL)"
+    ],
+    "date": "2025-04-13"
+  },
+  {
+    "title": "SKRZYŻOWANIE",
+    "genre": "Dramat",
+    "length": "99 min",
+    "type": [
+      "2D"
+    ],
+    "showtimes": [
+      "14:00",
+      "18:30"
+    ],
+    "image_url": "https://www.cinema-city.pl/xmedia-cw/repo/feats/posters/7208O2R.jpg",
+    "language": [
+      "ORYGINALNA WERSJA:PL · (BEZ NAPISÓW)"
+    ],
+    "date": "2025-04-13"
+  },
+  {
+    "title": "ŚNIEŻKA",
+    "genre": "Przygodowy, Fantasy",
+    "length": "108 min",
+    "type": [
+      "2D"
+    ],
+    "showtimes": [
+      "10:45",
+      "13:15",
+      "15:45",
+      "18:15"
+    ],
+    "image_url": "https://www.cinema-city.pl/xmedia-cw/repo/feats/posters/6750D2R.jpg",
+    "language": [
+      "EN · (FILM Z DUBBINGIEM · PL)"
+    ],
+    "date": "2025-04-13"
+  },
+  {
+    "title": "WUJEK FOLIARZ",
+    "genre": "Komedia",
+    "length": "88 min",
+    "type": [
+      "2D"
+    ],
+    "showtimes": [
+      "16:20",
+      "20:45"
+    ],
+    "image_url": "https://www.cinema-city.pl/xmedia-cw/repo/feats/posters/7163O2R.jpg",
+    "language": [
+      "ORYGINALNA WERSJA:PL · (BEZ NAPISÓW)"
+    ],
     "date": "2025-04-13"
   },
   {
     "title": "GWIEZDNE WOJNY: CZĘŚĆ III - ZEMSTA SITHÓW. 20-LECIE",
-    "genre": "Przygodowy, Sci-Fi ",
+    "genre": "Przygodowy, Sci-Fi",
     "length": "140 min",
-    "type": "",
+    "type": [],
     "showtimes": [
-      "PON\nKWI 21",
-      "WT\nKWI 22",
-      "ŚR\nKWI 23",
-      "CZW\nKWI 24",
-      "PT\nKWI 25",
-      "SB\nKWI 26",
-      "NIE\nKWI 27"
+      "PON KWI 21",
+      "WT KWI 22",
+      "ŚR KWI 23",
+      "CZW KWI 24",
+      "PT KWI 25",
+      "SB KWI 26",
+      "NIE KWI 27"
     ],
-    "image_url": "https://www.cinema-city.pl/xmedia/img/10103/rating/N_A.png",
-    "language": "",
+    "image_url": "https://www.cinema-city.pl/xmedia-cw/repo/feats/posters/7235S2R.jpg",
+    "language": [],
+    "date": "2025-04-13"
+  },
+  {
+    "title": "UNLIMITED SHOW - KSIĘGOWY 2",
+    "genre": "Akcja, Dramat",
+    "length": "124 min",
+    "type": [],
+    "showtimes": [
+      "WT KWI 22"
+    ],
+    "image_url": "https://www.cinema-city.pl/xmedia-cw/repo/feats/posters/7144S2R1.jpg",
+    "language": [],
     "date": "2025-04-13"
   },
   {
     "title": "KSIĘGOWY 2",
-    "genre": "Akcja, Dramat ",
+    "genre": "Akcja, Dramat",
     "length": "124 min",
-    "type": "",
+    "type": [],
     "showtimes": [
-      "PT\nKWI 25",
-      "SB\nKWI 26",
-      "NIE\nKWI 27"
+      "PT KWI 25",
+      "SB KWI 26",
+      "NIE KWI 27"
     ],
-    "image_url": "https://www.cinema-city.pl/xmedia/img/10103/rating/N_A.png",
-    "language": "",
+    "image_url": "https://www.cinema-city.pl/xmedia-cw/repo/feats/posters/7144S2R.jpg",
+    "language": [],
     "date": "2025-04-13"
   },
   {
     "title": "UNTIL DAWN",
-    "genre": "Horror ",
+    "genre": "Horror",
     "length": "103 min",
-    "type": "",
+    "type": [],
     "showtimes": [
-      "PT\nKWI 25",
-      "SB\nKWI 26",
-      "NIE\nKWI 27"
+      "PT KWI 25",
+      "SB KWI 26",
+      "NIE KWI 27"
     ],
-    "image_url": "https://www.cinema-city.pl/xmedia/img/10103/rating/N_A.png",
-    "language": "",
+    "image_url": "https://www.cinema-city.pl/xmedia-cw/repo/feats/posters/7193S2R.jpg",
+    "language": [],
     "date": "2025-04-13"
   },
   {
     "title": "THUNDERBOLTS*",
-    "genre": "Akcja, Przygodowy, Sci-Fi ",
+    "genre": "Akcja, Przygodowy, Sci-Fi",
     "length": "126 min",
-    "type": "",
+    "type": [],
     "showtimes": [
-      "ŚR\nKWI 30",
-      "CZW\nMAJ 1",
-      "PT\nMAJ 2",
-      "SB\nMAJ 3",
-      "NIE\nMAJ 4"
+      "ŚR KWI 30",
+      "CZW MAJ 1",
+      "PT MAJ 2",
+      "SB MAJ 3",
+      "NIE MAJ 4"
     ],
-    "image_url": "https://www.cinema-city.pl/xmedia/img/10103/rating/N_A.png",
-    "language": "",
+    "image_url": "https://www.cinema-city.pl/xmedia-cw/repo/feats/posters/6903S2R.jpg",
+    "language": [],
     "date": "2025-04-13"
   },
   {
     "title": "PEPPA POZNAJE NOWEGO CZŁONKA RODZINY – POKAZY SPECJALNE",
-    "genre": "Animowany, Familijny ",
+    "genre": "Animowany, Familijny",
     "length": "65 min",
-    "type": "",
+    "type": [],
     "showtimes": [
-      "PT\nMAJ 30",
-      "SB\nMAJ 31",
-      "NIE\nCZE 1"
+      "PT MAJ 30",
+      "SB MAJ 31",
+      "NIE CZE 1"
     ],
-    "image_url": "https://www.cinema-city.pl/xmedia/img/10103/rating/Bez_Ograniczen.png",
-    "language": "",
+    "image_url": "https://www.cinema-city.pl/xmedia-cw/repo/feats/posters/7267D2R.jpg",
+    "language": [],
     "date": "2025-04-13"
   }
 ]
