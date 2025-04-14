@@ -6,10 +6,29 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body {
-  background-color: #fdfdfd;
-  color: #333;
-  padding: 20px;
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Ustawienie wysokości na 100% ekranu */
+  font-family: Arial, sans-serif;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  position: relative; /* Ustawienie pozycji dla pseudo-elementu */
+  z-index: 0; /* Ustawienie warstwy dla treści */
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* Wypełnia cały ekran */
+  background: url('/static/kino.jpg') no-repeat center center fixed;
+  background-size: cover; /* Dopasowanie obrazu do ekranu */
+  opacity: 0.4; /* Ustawienie przezroczystości */
+  z-index: -1; /* Umieszczenie obrazu za treścią */
 }
 
 header {
@@ -103,7 +122,7 @@ nav a:hover {
   transition: background-color 0.3s ease;
 }
 
-.movie-card button:hover {
+movie-card button:hover {
   background-color: #ffdd33;
 }
 
@@ -113,4 +132,48 @@ footer {
   margin-top: 40px;
   font-size: 0.9em;
   color: #aaa;
+}
+
+.logo {
+  color: red;
+  font-size: 3rem;
+  margin-top: 20px;
+}
+
+.content {
+  margin-top: 50px;
+  font-size: 1.2rem;
+}
+
+a {
+  color: red;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+input {
+  border: 1px solid #ccc;
+  padding: 8px;
+  font-size: 1rem;
+}
+
+input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+input.error {
+  border-color: red;
+  border-width: 4px; /* Zwiększa grubość obwódki */
+}
+
+small {
+  font-size: 0.9rem;
+  color: red;
+  visibility: hidden; /* Domyślnie ukryte */
+  height: 1em; /* Rezerwuje miejsce na komunikat */
+  display: block; /* Wyświetla komunikat w nowej linii */
 }
