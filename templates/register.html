@@ -3,92 +3,58 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registration Page</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f9;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    .registration-form {
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      width: 100%;
-      max-width: 400px;
-    }
-    .registration-form h2 {
-      margin-bottom: 20px;
-      font-size: 24px;
-      color: #333;
-    }
-    .form-group {
-      margin-bottom: 15px;
-    }
-    .form-group label {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: bold;
-    }
-    .form-group input {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    .form-group button {
-      width: 100%;
-      padding: 10px;
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    .form-group button:hover {
-      background-color: #0056b3;
-    }
-  </style>
+  <title>Register</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-  <form class="registration-form" method="POST" action="{{ url_for('register') }}">
-    <h2>Register</h2>
-    {{ form.hidden_tag() }}
-
-    <div class="form-group">
-        {{ form.username.label }}
-        {{ form.username(class="form-control", placeholder="Enter your username") }}
-    </div>
-
-    <div class="form-group">
-        {{ form.email.label }}
-        {{ form.email(class="form-control", placeholder="Enter your email") }}
-    </div>
-
-    <div class="form-group">
-        {{ form.password.label }}
-        {{ form.password(class="form-control", placeholder="Enter your password") }}
-    </div>
-
-    <div class="form-group">
-        {{ form.repeat_password.label }}
-        {{ form.repeat_password(class="form-control", placeholder="Re-enter your password") }}
-    </div>
-
-    <div class="form-group">
-        {{ form.submit(class="btn btn-primary") }}
-    </div>
-
+  <div class="logo">CineMatch</div>
+  <div class="content">
+    <h1>Register</h1>
+    <form method="POST" action="{{ url_for('register') }}" id="registerForm">
+      {{ form.hidden_tag() }}
+      <div>
+        {{ form.username.label }}<br>
+        {{ form.username(size=32, id="username") }}
+      </div>
+      <div>
+        {{ form.email.label }}<br>
+        {{ form.email(size=32, id="email") }}
+      </div>
+      <div>
+        {{ form.password.label }}<br>
+        {{ form.password(size=32, id="password") }}
+      </div>
+      <div>
+        {{ form.repeat_password.label }}<br>
+        {{ form.repeat_password(size=32, id="repeat_password") }}
+        <small id="passwordError" style="color: red; visibility: hidden; height: 1em; display: block;">Passwords do not match!</small>
+      </div>
+      <div>
+        {{ form.submit() }}
+      </div>
+    </form>
     <p>Already have an account? <a href="/login">Login here</a></p>
     <p><a href="/">Back to Home</a></p>
-  </form>
+  </div>
+  <script>
+    document.getElementById('registerForm').addEventListener('input', function () {
+      const passwordField = document.getElementById('password');
+      const repeatPasswordField = document.getElementById('repeat_password');
+      const errorText = document.getElementById('passwordError');
 
+      const password = passwordField.value;
+      const repeatPassword = repeatPasswordField.value;
+
+      if (repeatPassword && password !== repeatPassword) {
+        passwordField.classList.add('error');
+        repeatPasswordField.classList.add('error');
+        errorText.style.visibility = 'visible';
+      } else {
+        passwordField.classList.remove('error');
+        repeatPasswordField.classList.remove('error');
+        errorText.style.visibility = 'hidden';
+      }
+    });
+  </script>
 </body>
 </html>
