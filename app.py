@@ -53,15 +53,6 @@ class LoginForm(FlaskForm):
     username = StringField('Username', validators=[InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "Username"})
     password = PasswordField('Password', validators=[InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "Password"})
     submit = SubmitField('Login')
-    def validate_username(self, username):
-        existing_user = User.query.filter_by(username=username.data).first()
-        if not existing_user:
-            raise ValidationError("Username does not exist. Please register first.")
-    def validate_password(self, password):
-        existing_user = User.query.filter_by(username=self.username.data).first()
-        if existing_user and existing_user.password != password.data:
-            raise ValidationError("Incorrect password. Please try again.")
-
 
 @app.route('/')
 def home():
@@ -72,6 +63,8 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
+        print(user)
+        print(form.password.data)
         if user:
             if bcrypt.check_password_hash(user.password, form.password.data):
                 login_user(user)
