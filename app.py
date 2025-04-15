@@ -173,11 +173,18 @@ def filter_movies():
 
     return jsonify({"movies": filtered_movies})
 
-@app.route('/my-movies')
+@app.route("/my-movies")
 def my_movies():
-    # Get favorite movies from the session
+    # Get favorite movie IDs or titles from the session
     favorite_movie_ids = session.get("favorites", [])
-    favorite_movies = [movie for movie in available_movies if movie["id"] in favorite_movie_ids]
+    
+    # Safely filter movies by checking if "id" exists or matching on "title"
+    favorite_movies = [
+        movie for movie in available_movies
+        if ("id" in movie and movie["id"] in favorite_movie_ids) or
+           ("title" in movie and movie["title"] in favorite_movie_ids)
+    ]
+    
     return render_template("my_movies.html", favorite_movies=favorite_movies)
 
 @app.route('/toggle-favorite', methods=['POST'])
