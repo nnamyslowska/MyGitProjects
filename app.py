@@ -100,8 +100,8 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Login')
 
 @app.route('/')
-def home():
-    return render_template("home.html")
+def dashboard():
+    return render_template('dashboard.html')
 
 @app.route('/login', methods=['GET', 'POST'])   
 def login():
@@ -117,14 +117,6 @@ def login():
         else:
             flash("Invalid credentials, please try again.", "danger")
     return render_template("login.html", form=form)
-
-@app.route('/dashboard', methods=['GET', 'POST'])
-@login_required
-def dashboard():
-    if not current_user.is_authenticated:
-        flash("Please log in to access the dashboard.", "warning")
-        return redirect(url_for('login'))
-    return render_template("dashboard.html", name=current_user.username)
 
 @app.route('/logout', methods=['GET', 'POST'])
 @login_required
@@ -166,10 +158,16 @@ def filter_movies():
 def my_movies():
     return render_template('my_movies.html')
 
+@app.route('/match')
+def match():
+    return render_template('match.html')
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
     app.run(debug=True)
+
+
 
 
 
