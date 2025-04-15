@@ -177,3 +177,7 @@ small {
   height: 1em; /* Rezerwuje miejsce na komunikat */
   display: block; /* Wyświetla komunikat w nowej linii */
 }
+
+.bg-darker {
+  background-color: #101010 !important; /* Ciemniejszy odcień czarnego */
+}
