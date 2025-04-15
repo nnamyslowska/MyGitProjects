@@ -39,6 +39,55 @@
     <div class="mb-4">
       <h1 class="text-white fw-bold">Welcome to Your <span class="text-danger">CineMatch</span> Dashboard, <span class="text-white">{{ current_user.username }}</span></h1>
     </div>
+    <div class="mb-4">
+      <div class="row justify-content-center">
+        <div class="col-md-4">
+          <input type="text" id="genre" class="form-control mb-2" placeholder="Enter Genre">
+          <input type="date" id="date" class="form-control mb-2">
+          <button id="filter-btn" class="btn btn-danger">Filter Movies</button>
+        </div>
+      </div>
+    </div>
+    <div id="movie-list" class="mt-4"></div>
   </div>
+
+  <script>
+    document.getElementById('filter-btn').addEventListener('click', function () {
+      const genre = document.getElementById('genre').value;
+      const date = document.getElementById('date').value;
+
+      // Make an AJAX request to fetch filtered movies
+      fetch(`/filter-movies?genre=${genre}&date=${date}`)
+        .then(response => response.json())
+        .then(data => {
+          const movieList = document.getElementById('movie-list');
+          movieList.innerHTML = ''; // Clear previous results
+
+          if (data.movies.length > 0) {
+            data.movies.forEach(movie => {
+              const movieItem = document.createElement('div');
+              movieItem.className = 'text-white mb-2';
+              movieItem.innerHTML = `
+                <div class="card bg-dark text-white mb-3" style="max-width: 18rem;">
+                  <img src="${movie.image_url}" class="card-img-top" alt="${movie.title}">
+                  <div class="card-body">
+                    <h5 class="card-title">${movie.title}</h5>
+                    <p class="card-text">Genre: ${movie.genre}</p>
+                    <p class="card-text">Date: ${movie.date}</p>
+                    <p class="card-text">Showtimes: ${movie.showtimes.join(', ')}</p>
+                  </div>
+                </div>
+              `;
+              movieList.appendChild(movieItem);
+            });
+          } else {
+            movieList.innerHTML = '<p class="text-white">No movies found for the selected filters.</p>';
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching movies:', error);
+        });
+    });
+  </script>
 </body>
 </html>

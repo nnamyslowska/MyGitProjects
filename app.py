@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, redirect, flash
+from flask import Flask, render_template, url_for, redirect, flash, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
 import os
@@ -6,6 +6,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Length, ValidationError
 from flask_bcrypt import Bcrypt
+import json
 
 
 app = Flask(__name__)
@@ -143,6 +144,23 @@ def register():
         return redirect(url_for('login'))
     return render_template("register.html", form=form)
 
+@app.route('/filter-movies', methods=['GET'])
+def filter_movies():
+    genre = request.args.get('genre', 'all').lower()
+    date = request.args.get('date')
+
+    # Load the JSON data
+    with open('cinemacity_scraper/cinema_bemowo_movies_today_fromPyCharm.json', 'r', encoding='utf-8') as f:
+        movies = json.load(f)
+
+    # Filter movies by genre and date
+    filtered_movies = []
+    for movie in movies:
+        movie_genres = [g.strip().lower() for g in movie['genre'].split(',')]
+        if (genre == 'all' or genre in movie_genres) and (not date or movie['date'] == date):
+            filtered_movies.append(movie)
+
+    return jsonify({"movies": filtered_movies})
 
 if __name__ == '__main__':
     with app.app_context():
