@@ -35,23 +35,67 @@ class User(db.Model, UserMixin):
 
 
 class RegistrationForm(FlaskForm):
-    username = StringField('Username', validators=[InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "Username"})
-    password = PasswordField('Password', validators=[InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "Password"})
-    repeat_password = PasswordField('Repeat Password', validators=[InputRequired(), Length(min=4, max=80)])
-    email = StringField('Email', validators=[InputRequired(), Length(min=6, max=35)], render_kw={"placeholder": "Email"})
+    username = StringField(
+        'Username',
+        validators=[
+            InputRequired(),
+            Length(min=4, max=20, message="Username should be between 4 and 20 characters long")
+        ],
+        render_kw={"placeholder": "Username"}
+    )
+    password = PasswordField(
+        'Password',
+        validators=[
+            InputRequired(),
+            Length(min=4, max=20, message="Password should be between 4 and 20 characters long")
+        ],
+        render_kw={"placeholder": "Password"}
+    )
+    repeat_password = PasswordField(
+        'Repeat Password',
+        validators=[
+            InputRequired(),
+            Length(min=4, max=80, message="Repeat Password should be between 4 and 80 characters long")
+        ],
+        render_kw={"placeholder": "Repeat Password"}
+    )
+    email = StringField(
+        'Email',
+        validators=[
+            InputRequired(),
+            Length(min=6, max=35, message="Email should be between 6 and 35 characters long")
+        ],
+        render_kw={"placeholder": "Email"}
+    )
     submit = SubmitField('Register')
 
     def validate_username(self, username):
         existing_user = User.query.filter_by(username=username.data).first()
         if existing_user:
             raise ValidationError("Username already exists. Please choose a different one.")
+
     def validate_password(self, password):
         if password.data != self.repeat_password.data:
             raise ValidationError("Passwords do not match. Please try again.")
-        
+
+
 class LoginForm(FlaskForm):
-    username = StringField('Username', validators=[InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "Username"})
-    password = PasswordField('Password', validators=[InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "Password"})
+    username = StringField(
+        'Username',
+        validators=[
+            InputRequired(),
+            Length(min=4, max=20, message="Username should be between 4 and 20 characters long")
+        ],
+        render_kw={"placeholder": "Username"}
+    )
+    password = PasswordField(
+        'Password',
+        validators=[
+            InputRequired(),
+            Length(min=4, max=20, message="Password should be between 4 and 20 characters long")
+        ],
+        render_kw={"placeholder": "Password"}
+    )
     submit = SubmitField('Login')
 
 @app.route('/')
