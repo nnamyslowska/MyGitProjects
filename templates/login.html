@@ -27,10 +27,12 @@
             <div class="mb-3">
               {{ form.username.label(class="form-label") }}
               {{ form.username(class="form-control", id="username") }}
+              <small id="usernameError" class="text-danger d-block" style="visibility: hidden;">Empty username</small>
             </div>
             <div class="mb-3">
               {{ form.password.label(class="form-label") }}
               {{ form.password(class="form-control", id="password") }}
+              <small id="passwordError" class="text-danger d-block" style="visibility: hidden;">Empty password</small>
             </div>
             <div class="text-center">
               {{ form.submit(class="btn btn-danger", style="width: 40%;") }}
@@ -42,5 +44,42 @@
       </div>
     </div>
   </div>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function (event) {
+      let isValid = true;
+
+      // Get form fields
+      const usernameField = document.getElementById('username');
+      const passwordField = document.getElementById('password');
+      const usernameError = document.getElementById('usernameError');
+      const passwordError = document.getElementById('passwordError');
+
+      // Validate username
+      if (!usernameField.value.trim()) {
+        usernameField.classList.add('error');
+        usernameError.style.visibility = 'visible';
+        isValid = false;
+      } else {
+        usernameField.classList.remove('error');
+        usernameError.style.visibility = 'hidden';
+      }
+
+      // Validate password
+      if (!passwordField.value.trim()) {
+        passwordField.classList.add('error');
+        passwordError.style.visibility = 'visible';
+        isValid = false;
+      } else {
+        passwordField.classList.remove('error');
+        passwordError.style.visibility = 'hidden';
+      }
+
+      // Prevent form submission if invalid
+      if (!isValid) {
+        event.preventDefault();
+      }
+    });
+  </script>
 </body>
 </html>

@@ -167,7 +167,7 @@ input:focus {
 
 input.error {
   border-color: #dc3545;
-  border-width: 4px; /* Zwiększa grubość obwódki */
+  border-width: 4px;
 }
 
 small {

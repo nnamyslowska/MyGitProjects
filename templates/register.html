@@ -20,22 +20,25 @@
             <div class="mb-3">
               {{ form.username.label(class="form-label") }}
               {{ form.username(class="form-control", id="username") }}
+              <small id="usernameError" class="text-danger d-block" style="visibility: hidden;">Empty username</small>
             </div>
             <div class="mb-3">
               {{ form.email.label(class="form-label") }}
               {{ form.email(class="form-control", id="email") }}
+              <small id="emailError" class="text-danger d-block" style="visibility: hidden;">Empty email</small>
             </div>
             <div class="mb-3">
               {{ form.password.label(class="form-label") }}
               {{ form.password(class="form-control", id="password") }}
+              <small id="passwordError" class="text-danger d-block" style="visibility: hidden;">Empty password</small>
             </div>
             <div class="mb-3">
               {{ form.repeat_password.label(class="form-label") }}
               {{ form.repeat_password(class="form-control", id="repeat_password") }}
-              <small id="passwordError" class="text-danger d-block" style="visibility: hidden;">Passwords do not match!</small>
+              <small id="repeatPasswordError" class="text-danger d-block" style="visibility: hidden;">Empty repeat password</small>
             </div>
-            <div>
-              {{ form.submit(class="btn btn-primary") }}
+            <div class="text-center">
+              {{ form.submit(class="btn btn-danger", style="width: 40%;") }}
             </div>
           </form>
           <p class="mt-3">Already have an account? <a href="/login" class="text-decoration-none">Login here</a></p>
@@ -61,6 +64,66 @@
         passwordField.classList.remove('error');
         repeatPasswordField.classList.remove('error');
         errorText.style.visibility = 'hidden';
+      }
+    });
+
+    document.getElementById('registerForm').addEventListener('submit', function (event) {
+      let isValid = true;
+
+      // Get form fields
+      const usernameField = document.getElementById('username');
+      const emailField = document.getElementById('email');
+      const passwordField = document.getElementById('password');
+      const repeatPasswordField = document.getElementById('repeat_password');
+
+      const usernameError = document.getElementById('usernameError');
+      const emailError = document.getElementById('emailError');
+      const passwordError = document.getElementById('passwordError');
+      const repeatPasswordError = document.getElementById('repeatPasswordError');
+
+      // Validate username
+      if (!usernameField.value.trim()) {
+        usernameField.classList.add('error');
+        usernameError.style.visibility = 'visible';
+        isValid = false;
+      } else {
+        usernameField.classList.remove('error');
+        usernameError.style.visibility = 'hidden';
+      }
+
+      // Validate email
+      if (!emailField.value.trim()) {
+        emailField.classList.add('error');
+        emailError.style.visibility = 'visible';
+        isValid = false;
+      } else {
+        emailField.classList.remove('error');
+        emailError.style.visibility = 'hidden';
+      }
+
+      // Validate password
+      if (!passwordField.value.trim()) {
+        passwordField.classList.add('error');
+        passwordError.style.visibility = 'visible';
+        isValid = false;
+      } else {
+        passwordField.classList.remove('error');
+        passwordError.style.visibility = 'hidden';
+      }
+
+      // Validate repeat password
+      if (!repeatPasswordField.value.trim()) {
+        repeatPasswordField.classList.add('error');
+        repeatPasswordError.style.visibility = 'visible';
+        isValid = false;
+      } else {
+        repeatPasswordField.classList.remove('error');
+        repeatPasswordError.style.visibility = 'hidden';
+      }
+
+      // Prevent form submission if invalid
+      if (!isValid) {
+        event.preventDefault();
       }
     });
   </script>
