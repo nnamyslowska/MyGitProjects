@@ -9,8 +9,15 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-  <div class="container text-center">
-    <div class="logo mb-4">CineMatch</div>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-dark bg-darker">
+    <div class="container-fluid">
+      <span class="navbar-brand text-danger fw-bold">CineMatch</span>
+    </div>
+  </nav>
+
+  <!-- Login Content -->
+  <div class="container text-center mt-4">
     <div class="row justify-content-center">
       <div class="col-md-4">
         <div class="content">
@@ -25,8 +32,8 @@
               {{ form.password.label(class="form-label") }}
               {{ form.password(class="form-control", id="password") }}
             </div>
-            <div>
-              {{ form.submit(class="btn btn-primary") }}
+            <div class="text-center">
+              {{ form.submit(class="btn btn-danger", style="width: 40%;") }}
             </div>
           </form>
           <p class="mt-3">Don't have an account? <a href="/register" class="text-decoration-none">Register here</a></p>
