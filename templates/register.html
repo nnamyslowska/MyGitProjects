@@ -9,8 +9,15 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-  <div class="container text-center">
-    <div class="logo mb-4">CineMatch</div>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-dark bg-darker">
+    <div class="container-fluid">
+      <span class="navbar-brand text-danger fw-bold">CineMatch</span>
+    </div>
+  </nav>
+
+  <!-- Register Content -->
+  <div class="container text-center mt-4">
     <div class="row justify-content-center">
       <div class="col-md-4">
         <div class="content">
@@ -20,22 +27,22 @@
             <div class="mb-3">
               {{ form.username.label(class="form-label") }}
               {{ form.username(class="form-control", id="username") }}
-              <small id="usernameError" class="text-danger d-block" style="visibility: hidden;">Empty username</small>
+              <small id="usernameError" class="text-danger d-block" style="visibility: hidden;">Username should be between 4 and 20 characters long</small>
             </div>
             <div class="mb-3">
               {{ form.email.label(class="form-label") }}
               {{ form.email(class="form-control", id="email") }}
-              <small id="emailError" class="text-danger d-block" style="visibility: hidden;">Empty email</small>
+              <small id="emailError" class="text-danger d-block" style="visibility: hidden;">Email should be at least 6 characters long</small>
             </div>
             <div class="mb-3">
               {{ form.password.label(class="form-label") }}
               {{ form.password(class="form-control", id="password") }}
-              <small id="passwordError" class="text-danger d-block" style="visibility: hidden;">Empty password</small>
+              <small id="passwordError" class="text-danger d-block" style="visibility: hidden;">Password should be between 4 and 20 characters long</small>
             </div>
             <div class="mb-3">
               {{ form.repeat_password.label(class="form-label") }}
               {{ form.repeat_password(class="form-control", id="repeat_password") }}
-              <small id="repeatPasswordError" class="text-danger d-block" style="visibility: hidden;">Empty repeat password</small>
+              <small id="repeatPasswordError" class="text-danger d-block" style="visibility: hidden;">Passwords do not match</small>
             </div>
             <div class="text-center">
               {{ form.submit(class="btn btn-danger", style="width: 40%;") }}
@@ -47,26 +54,8 @@
       </div>
     </div>
   </div>
+
   <script>
-    document.getElementById('registerForm').addEventListener('input', function () {
-      const passwordField = document.getElementById('password');
-      const repeatPasswordField = document.getElementById('repeat_password');
-      const errorText = document.getElementById('passwordError');
-
-      const password = passwordField.value;
-      const repeatPassword = repeatPasswordField.value;
-
-      if (repeatPassword && password !== repeatPassword) {
-        passwordField.classList.add('error');
-        repeatPasswordField.classList.add('error');
-        errorText.style.visibility = 'visible';
-      } else {
-        passwordField.classList.remove('error');
-        repeatPasswordField.classList.remove('error');
-        errorText.style.visibility = 'hidden';
-      }
-    });
-
     document.getElementById('registerForm').addEventListener('submit', function (event) {
       let isValid = true;
 
@@ -82,7 +71,7 @@
       const repeatPasswordError = document.getElementById('repeatPasswordError');
 
       // Validate username
-      if (!usernameField.value.trim()) {
+      if (usernameField.value.trim().length < 4 || usernameField.value.trim().length > 20) {
         usernameField.classList.add('error');
         usernameError.style.visibility = 'visible';
         isValid = false;
@@ -92,7 +81,7 @@
       }
 
       // Validate email
-      if (!emailField.value.trim()) {
+      if (emailField.value.trim().length < 6) {
         emailField.classList.add('error');
         emailError.style.visibility = 'visible';
         isValid = false;
@@ -102,7 +91,7 @@
       }
 
       // Validate password
-      if (!passwordField.value.trim()) {
+      if (passwordField.value.trim().length < 4 || passwordField.value.trim().length > 20) {
         passwordField.classList.add('error');
         passwordError.style.visibility = 'visible';
         isValid = false;
@@ -112,7 +101,7 @@
       }
 
       // Validate repeat password
-      if (!repeatPasswordField.value.trim()) {
+      if (repeatPasswordField.value.trim() !== passwordField.value.trim()) {
         repeatPasswordField.classList.add('error');
         repeatPasswordError.style.visibility = 'visible';
         isValid = false;

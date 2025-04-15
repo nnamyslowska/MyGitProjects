@@ -37,46 +37,7 @@
   <!-- Dashboard Content -->
   <div class="container text-center mt-4">
     <div class="mb-4">
-      <h1 class="text-white fw-bold">Welcome to <span class="text-danger">CineMatch</span></h1>
-      <p class="text-white">Connect with fellow movie lovers and plan your next movie night!</p>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-md-8">
-        <div class="content">
-          <h1 class="mb-4">Welcome to Your Dashboard</h1>
-          <p class="lead">Here you can manage your account, explore movies, and much more!</p>
-          <div class="row mt-4">
-            <div class="col-md-4">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Your Profile</h5>
-                  <p class="card-text">View and edit your profile details.</p>
-                  <a href="/profile" class="btn btn-primary">Go to Profile</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Explore Movies</h5>
-                  <p class="card-text">Discover new movies and add them to your favorites.</p>
-                  <a href="/movies" class="btn btn-primary">Explore Movies</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Settings</h5>
-                  <p class="card-text">Update your account settings and preferences.</p>
-                  <a href="/settings" class="btn btn-primary">Go to Settings</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <p class="mt-4"><a href="/" class="text-decoration-none">Return Home</a></p>
-        </div>
-      </div>
+      <h1 class="text-white fw-bold">Welcome to Your <span class="text-danger">CineMatch</span> Dashboard, <span class="text-white">{{ current_user.username }}</span></h1>
     </div>
   </div>
 </body>
