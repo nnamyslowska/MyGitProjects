@@ -10,22 +10,24 @@
 </head>
 <body>
   <!-- Navigation Bar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg bg-darker navbar-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/">CineMatch</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
+      <!-- Left: Logo -->
+      <span class="navbar-brand text-danger fw-bold">CineMatch</span>
+      <!-- Right: Links -->
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link text-white" href="/my-movies">My Movies</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/login">Login</a>
+            <a class="nav-link text-white" href="/match">Match</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/register">Register</a>
+            <a class="nav-link text-white" href="/logout">Log Out</a>
+          </li>
+          <li class="nav-item d-flex align-items-center">
+            <span class="nav-link text-white">{{ current_user.username }}</span>
           </li>
         </ul>
       </div>
@@ -73,17 +75,6 @@
         </div>
       </div>
     </div>
-    <div class="px-4 py-5 my-5 text-center">
-        <img class="d-block mx-auto mb-4" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
-        <h1 class="display-5 fw-bold text-body-emphasis">Centered hero</h1>
-        <div class="col-lg-6 mx-auto">
-          <p class="lead mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
-          <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-            <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Primary button</button>
-            <button type="button" class="btn btn-outline-secondary btn-lg px-4">Secondary</button>
-          </div>
-        </div>
-      </div>
   </div>
 </body>
 </html>
