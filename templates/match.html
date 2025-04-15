@@ -12,12 +12,40 @@
       background-color: #121212;
       color: white;
     }
-    .center-title {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
+    .movie-card {
+      background-color: #1c1c1c;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+      position: relative;
+    }
+    .movie-card .card-title {
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+    .movie-card .card-text {
+      color: #b0b0b0;
+    }
+    .movie-card .username {
+      font-size: 0.9rem;
+      color: #ffc107;
+      margin-bottom: 5px;
+    }
+    .movie-card .suggested-text {
+      font-size: 0.85rem;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+    .movie-card .star-icon {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 1.5rem;
+      color: #ffc107;
+      cursor: pointer;
+    }
+    .movie-card .star-icon:hover {
+      color: #ffcc00;
     }
   </style>
 </head>
@@ -43,8 +71,48 @@
   </nav>
 
   <!-- Main Content -->
-  <div class="center-title">
-    <h1 class="fw-bold">Match</h1>
+  <div class="container mt-4">
+    <h1 class="text-center fw-bold mb-4">Match</h1>
+
+    <!-- Movie List -->
+    <div class="row">
+      <!-- Example Movie Card -->
+      <div class="col-md-4">
+        <div class="movie-card">
+          <i class="bi bi-star star-icon"></i>
+          <p class="username">user123</p>
+          <p class="suggested-text">Suggested Movies</p>
+          <h5 class="card-title">The Lord of the Rings</h5>
+          <p class="card-text">Genre: Fantasy</p>
+          <p class="card-text">Rating: 4.8/5</p>
+          <p class="card-text">Showtimes: 12:30 PM, 3:00 PM</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="movie-card">
+          <i class="bi bi-star star-icon"></i>
+          <p class="username">MovieLover</p>
+          <p class="suggested-text">Suggested Movies</p>
+          <h5 class="card-title">Mad Max: Fury Road</h5>
+          <p class="card-text">Genre: Action</p>
+          <p class="card-text">Rating: 4.7/5</p>
+          <p class="card-text">Showtimes: 2:00 PM, 6:00 PM</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="movie-card">
+          <i class="bi bi-star star-icon"></i>
+          <p class="username">Cinephile</p>
+          <p class="suggested-text">Suggested Movies</p>
+          <h5 class="card-title">The Grand Budapest Hotel</h5>
+          <p class="card-text">Genre: Comedy</p>
+          <p class="card-text">Rating: 4.5/5</p>
+          <p class="card-text">Showtimes: 1:00 PM, 4:30 PM</p>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Footer -->
