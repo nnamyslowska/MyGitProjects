@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Match Suggestions</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #121212;
+      color: white;
+    }
+    .movie-card {
+      background-color: #1c1c1c;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg bg-darker navbar-dark">
+    <div class="container-fluid">
+      <span class="navbar-brand text-danger fw-bold">CineMatch</span>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container mt-4">
+    <h1 class="text-center fw-bold mb-4">Movie Suggestions for {{ username }}</h1>
+    <div class="row">
+      {% for movie in suggested_movies %}
+      <div class="col-md-4">
+        <div class="movie-card">
+          <h5 class="fw-bold">{{ movie.title }}</h5>
+          <p>Genre: {{ movie.genre }}</p>
+          <p>Duration: {{ movie.duration }}</p>
+          <p>Showtimes: {{ movie.showtimes | join(', ') }}</p>
+          <button class="btn btn-success" onclick="chooseMovie('{{ movie.title }}')">Choose the Movie</button>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <script>
+    function chooseMovie(movieTitle) {
+      fetch("/choose-movie", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ movie_title: movieTitle }),
+      })
+      .then(response => response.json())
+      .then(data => alert(data.message));
+    }
+  </script>
+</body>
+</html>

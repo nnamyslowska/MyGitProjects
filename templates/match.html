@@ -47,6 +47,12 @@
     .movie-card .star-icon:hover {
       color: #ffcc00;
     }
+    .user-card {
+      background-color: #1c1c1c;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
   </style>
 </head>
 <body>
@@ -72,46 +78,17 @@
 
   <!-- Main Content -->
   <div class="container mt-4">
-    <h1 class="text-center fw-bold mb-4">Match</h1>
-
-    <!-- Movie List -->
+    <h1 class="text-center fw-bold mb-4">Matched Users</h1>
     <div class="row">
-      <!-- Example Movie Card -->
+      {% for user in matched_users %}
       <div class="col-md-4">
-        <div class="movie-card">
-          <i class="bi bi-star star-icon"></i>
-          <p class="username">user123</p>
-          <p class="suggested-text">Suggested Movies</p>
-          <h5 class="card-title">The Lord of the Rings</h5>
-          <p class="card-text">Genre: Fantasy</p>
-          <p class="card-text">Rating: 4.8/5</p>
-          <p class="card-text">Showtimes: 12:30 PM, 3:00 PM</p>
+        <div class="user-card">
+          <h5 class="fw-bold">{{ user.username }}</h5>
+          <p>Shared Genres: {{ user.shared_genres | join(', ') }}</p>
+          <a href="{{ url_for('match_with', username=user.username) }}" class="btn btn-danger">Match for Movies</a>
         </div>
       </div>
-
-      <div class="col-md-4">
-        <div class="movie-card">
-          <i class="bi bi-star star-icon"></i>
-          <p class="username">MovieLover</p>
-          <p class="suggested-text">Suggested Movies</p>
-          <h5 class="card-title">Mad Max: Fury Road</h5>
-          <p class="card-text">Genre: Action</p>
-          <p class="card-text">Rating: 4.7/5</p>
-          <p class="card-text">Showtimes: 2:00 PM, 6:00 PM</p>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="movie-card">
-          <i class="bi bi-star star-icon"></i>
-          <p class="username">Cinephile</p>
-          <p class="suggested-text">Suggested Movies</p>
-          <h5 class="card-title">The Grand Budapest Hotel</h5>
-          <p class="card-text">Genre: Comedy</p>
-          <p class="card-text">Rating: 4.5/5</p>
-          <p class="card-text">Showtimes: 1:00 PM, 4:30 PM</p>
-        </div>
-      </div>
+      {% endfor %}
     </div>
   </div>
 

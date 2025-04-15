@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, redirect, flash, request, jsonify
+from flask import Flask, render_template, url_for, redirect, flash, request, jsonify, session
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
 import os
@@ -14,6 +14,7 @@ bcrypt = Bcrypt(app)
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'database.db')
 app.config['SECRET_KEY'] = 'secret'
+app.secret_key = "your_secret_key"  # Required for session management
 
 db = SQLAlchemy(app)
 
@@ -99,9 +100,27 @@ class LoginForm(FlaskForm):
     )
     submit = SubmitField('Login')
 
+# Example list of available movies
+available_movies = [
+    {"title": "Avengers", "genre": "Action", "duration": "143 min", "format": "2D", "showtimes": ["12:30", "15:00"]},
+    {"title": "Barbie", "genre": "Comedy", "duration": "120 min", "format": "2D", "showtimes": ["14:00", "17:30"]},
+    {"title": "Oppenheimer", "genre": "Drama", "duration": "180 min", "format": "3D", "showtimes": ["16:00", "19:00"]},
+    {"title": "Spider-Man: No Way Home", "genre": "Action", "duration": "148 min", "format": "3D", "showtimes": ["18:00", "20:30"]},
+]
+
+users = [
+    {"username": "user123", "genres": ["Action", "Comedy"]},
+    {"username": "MovieLover", "genres": ["Fantasy", "Action"]},
+    {"username": "Cinephile", "genres": ["Comedy", "Drama"]},
+]
+
+# Simulate logged-in user
+current_user_data = {"username": "current_user", "genres": ["Action", "Comedy"]}
+
 @app.route('/')
 def dashboard():
-    return render_template('dashboard.html')
+    # Pass available movies to the dashboard
+    return render_template('dashboard.html', movies=available_movies)
 
 @app.route('/login', methods=['GET', 'POST'])   
 def login():
@@ -156,11 +175,53 @@ def filter_movies():
 
 @app.route('/my-movies')
 def my_movies():
-    return render_template('my_movies.html')
+    # Get favorite movies from the session
+    favorite_movie_ids = session.get("favorites", [])
+    favorite_movies = [movie for movie in available_movies if movie["id"] in favorite_movie_ids]
+    return render_template("my_movies.html", favorite_movies=favorite_movies)
+
+@app.route('/toggle-favorite', methods=['POST'])
+def toggle_favorite():
+    # Toggle a movie's favorite status
+    movie_id = request.json.get("movie_id")
+    if "favorites" not in session:
+        session["favorites"] = []
+    favorites = session["favorites"]
+
+    if movie_id in favorites:
+        favorites.remove(movie_id)  # Remove from favorites
+    else:
+        favorites.append(movie_id)  # Add to favorites
+
+    session["favorites"] = favorites
+    return jsonify({"success": True, "favorites": favorites})
 
 @app.route('/match')
 def match():
-    return render_template('match.html')
+    # Find matched users based on shared genres
+    matched_users = []
+    for user in users:
+        shared_genres = set(current_user_data["genres"]) & set(user["genres"])
+        if shared_genres:
+            matched_users.append({"username": user["username"], "shared_genres": list(shared_genres)})
+    return render_template("match.html", matched_users=matched_users)
+
+@app.route("/match-with/<username>")
+def match_with(username):
+    # Find shared genres with the matched user
+    matched_user = next((user for user in users if user["username"] == username), None)
+    if not matched_user:
+        return redirect(url_for("match"))
+
+    shared_genres = set(current_user_data["genres"]) & set(matched_user["genres"])
+    # Filter movies based on shared genres
+    suggested_movies = [movie for movie in available_movies if movie["genre"] in shared_genres]
+    return render_template("match_suggestions.html", username=username, suggested_movies=suggested_movies)
+
+@app.route("/choose-movie", methods=["POST"])
+def choose_movie():
+    movie_title = request.json.get("movie_title")
+    return jsonify({"message": f"🎉 IT'S A MATCH! You chose {movie_title}."})
 
 if __name__ == '__main__':
     with app.app_context():

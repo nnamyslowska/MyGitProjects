@@ -12,12 +12,15 @@
       background-color: #121212;
       color: white;
     }
-    .center-title {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
+    .movie-card {
+      background-color: #1c1c1c;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+    .movie-card .bi-star-fill {
+      font-size: 1.5rem;
+      color: #ffc107;
     }
   </style>
 </head>
@@ -31,20 +34,27 @@
           <li class="nav-item">
             <a class="nav-link text-white" href="/">Dashboard</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="/match">Match</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="/logout">Log Out</a>
-          </li>
         </ul>
       </div>
     </div>
   </nav>
 
   <!-- Main Content -->
-  <div class="center-title">
-    <h1 class="fw-bold">My Movies</h1>
+  <div class="container mt-4">
+    <h1 class="text-center fw-bold mb-4">My Movies</h1>
+    {% if favorite_movies %}
+      {% for movie in favorite_movies %}
+      <div class="movie-card d-flex justify-content-between align-items-center">
+        <div>
+          <h5 class="fw-bold mb-1">{{ movie.title }}</h5>
+          <p class="mb-0 text-white-50">{{ movie.genre }} • {{ movie.duration }}, {{ movie.format }}</p>
+        </div>
+        <i class="bi bi-star-fill"></i>
+      </div>
+      {% endfor %}
+    {% else %}
+      <p class="text-center text-white">No favorite movies to display.</p>
+    {% endif %}
   </div>
 
   <!-- Footer -->
