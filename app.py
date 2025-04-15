@@ -162,7 +162,14 @@ def filter_movies():
 
     return jsonify({"movies": filtered_movies})
 
+@app.route('/my-movies')
+def my_movies():
+    return render_template('my_movies.html')
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
     app.run(debug=True)
+
+
+
