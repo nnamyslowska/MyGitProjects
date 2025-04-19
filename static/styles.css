@@ -31,6 +31,16 @@ body::before {
   z-index: -1; /* Umieszczenie obrazu za treścią */
 }
 
+/* Shared Background */
+body {
+  background-image: url('/static/background.jpg'); /* Replace with your actual background image path */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  color: white;
+}
+
 header {
   text-align: center;
   margin-bottom: 30px;
@@ -79,7 +89,7 @@ nav a:hover {
 
 /* Movie Card */
 .movie-card {
-  background-color: #ffffff;
+  background-color: #1c1c1c;
   border: 1px solid #e0e0e0;
   border-radius: 10px;
   padding: 15px;
@@ -126,6 +136,50 @@ movie-card button:hover {
   background-color: #ffdd33;
 }
 
+/* Card Styles */
+.card, .movie-card, .user-card {
+  background-color: #1c1c1c;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  color: white;
+}
+
+.card-title, .movie-card .card-title, .user-card .card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card-text, .movie-card .card-text, .user-card .card-text {
+  color: #b0b0b0;
+}
+
+.movie-card .username {
+  font-size: 0.9rem;
+  color: #ffc107;
+  margin-bottom: 5px;
+}
+
+.movie-card .suggested-text {
+  font-size: 0.85rem;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.movie-card .star-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  color: #ffc107;
+  cursor: pointer;
+}
+
+.movie-card .star-icon:hover {
+  color: #ffcc00;
+}
+
 /* Card */
 .card {
   background-color: #1c1c1c;
@@ -153,8 +207,12 @@ movie-card button:hover {
   margin-bottom: 5px;
 }
 
-.bi-star {
+.bi-star, .bi-star-fill {
   cursor: pointer;
+}
+
+.navbar {
+  background-color: #1c1c1c;
 }
 
 /* Footer */

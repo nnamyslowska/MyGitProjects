@@ -6,23 +6,8 @@
   <title>My Movies</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-  <style>
-    body {
-      background-color: #121212;
-      color: white;
-    }
-    .movie-card {
-      background-color: #1c1c1c;
-      border-radius: 8px;
-      padding: 15px;
-      margin-bottom: 15px;
-    }
-    .movie-card .bi-star-fill {
-      font-size: 1.5rem;
-      color: #ffc107;
-    }
-  </style>
 </head>
 <body>
   <!-- Navigation Bar -->
@@ -34,6 +19,12 @@
           <li class="nav-item">
             <a class="nav-link text-white" href="/">Dashboard</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{{ url_for('match') }}">Match</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="/logout">Log Out</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -44,12 +35,14 @@
     <h1 class="text-center fw-bold mb-4">My Movies</h1>
     {% if favorite_movies %}
       {% for movie in favorite_movies %}
-      <div class="movie-card d-flex justify-content-between align-items-center">
-        <div>
-          <h5 class="fw-bold mb-1">{{ movie.title }}</h5>
-          <p class="mb-0 text-white-50">{{ movie.genre }} • {{ movie.duration }}, {{ movie.format }}</p>
+      <div class="card text-white shadow-sm mb-3">
+        <div class="card-body d-flex justify-content-between align-items-center">
+          <div>
+            <h5 class="fw-bold mb-1">{{ movie.title }}</h5>
+            <p class="mb-0 text-white-50">{{ movie.genre }} • {{ movie.duration }}, {{ movie.format }}</p>
+          </div>
+          <i class="bi bi-star-fill"></i>
         </div>
-        <i class="bi bi-star-fill"></i>
       </div>
       {% endfor %}
     {% else %}
