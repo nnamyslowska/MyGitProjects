@@ -66,12 +66,12 @@
         </div>
       </div>
     </div>
-    <div id="movie-list" class="mt-4"></div>
+    <!-- <div id="movie-list" class="mt-4"></div> -->
   </div>
 
   <div class="container mt-4">
     <h1 class="text-center text-white fw-bold mb-4">Available Movies</h1>
-    <div class="row g-4">
+    <div id="movie-container" class="row g-4">
       {% if movies %}
         {% for movie in movies %}
         <div class="col-12 col-md-6">
@@ -115,33 +115,80 @@
       fetch(`/filter-movies?genre=${genre}&date=${date}`)
         .then(response => response.json())
         .then(data => {
-          const movieList = document.getElementById('movie-list');
-          movieList.innerHTML = ''; // Clear previous results
+          const movieContainer = document.getElementById('movie-container');
+          movieContainer.innerHTML = ''; // Clear previous results
+
+          const displayDate = data.date || new Date().toISOString().split('T')[0]; // Fallback to today's date
 
           if (data.movies.length > 0) {
             data.movies.forEach(movie => {
-              const movieItem = document.createElement('div');
-              movieItem.className = 'text-white mb-2';
-              movieItem.innerHTML = `
-                <div class="card bg-dark text-white mb-3" style="max-width: 18rem;">
-                  <img src="${movie.image_url}" class="card-img-top" alt="${movie.title}">
-                  <div class="card-body">
-                    <h5 class="card-title">${movie.title}</h5>
-                    <p class="card-text">Genre: ${movie.genre}</p>
-                    <p class="card-text">Date: ${movie.date}</p>
-                    <p class="card-text">Showtimes: ${movie.showtimes.join(', ')}</p>
+              const movieCard = `
+                <div class="col-12 col-md-6">
+                  <div class="card text-white shadow-sm position-relative" style="max-width: 100%;">
+                    <!-- Star Icon -->
+                    <i class="bi bi-star text-warning position-absolute top-0 end-0 m-2" data-movie-id="${movie.id}" onclick="toggleFavorite(this)"></i>
+                    <!-- Card Body -->
+                    <div class="card-body d-flex p-2">
+                      <!-- Movie Poster -->
+                      <img src="${movie.image_url}" alt="${movie.title}" class="me-3 flex-shrink-0" style="width: 160px; object-fit: cover;">
+                      <!-- Movie Details -->
+                      <div class="text-start">
+                        <h5 class="fw-bold mb-1">${movie.title}</h5>
+                        <p class="mb-1"><strong>Genre:</strong> ${movie.genre}</p>
+                        <p class="mb-1"><strong>Format:</strong> ${movie.type.join(', ') || 'N/A'}</p>
+                        <p class="mb-1"><strong>Duration:</strong> ${movie.length}</p>
+                        <p class="mb-1"><strong>Showtimes:</strong> ${movie.showtimes.join(', ')}</p>
+                        <p class="mb-0"><strong>Date:</strong> ${movie.date}</p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              `;
-              movieList.appendChild(movieItem);
+                </div>`;
+              movieContainer.innerHTML += movieCard;
             });
           } else {
-            movieList.innerHTML = '<p class="text-white">No movies found for the selected filters.</p>';
+            movieContainer.innerHTML = `<p class="text-center text-white">There are no movies being displayed on ${displayDate}, come back later!</p>`;
           }
         })
         .catch(error => {
           console.error('Error fetching movies:', error);
         });
+    });
+
+    document.getElementById('genre').addEventListener('input', function () {
+      if (this.value.trim() === '') {
+        // Reload today's movies
+        fetch(`/filter-movies?date=${new Date().toISOString().split('T')[0]}`)
+          .then(response => response.json())
+          .then(data => {
+            const movieContainer = document.getElementById('movie-container');
+            movieContainer.innerHTML = ''; // Clear previous results
+
+            data.movies.forEach(movie => {
+              const movieCard = `
+                <div class="col-12 col-md-6">
+                  <div class="card text-white shadow-sm position-relative" style="max-width: 100%;">
+                    <!-- Star Icon -->
+                    <i class="bi bi-star text-warning position-absolute top-0 end-0 m-2" data-movie-id="${movie.id}" onclick="toggleFavorite(this)"></i>
+                    <!-- Card Body -->
+                    <div class="card-body d-flex p-2">
+                      <!-- Movie Poster -->
+                      <img src="${movie.image_url}" alt="${movie.title}" class="me-3 flex-shrink-0" style="width: 160px; object-fit: cover;">
+                      <!-- Movie Details -->
+                      <div class="text-start">
+                        <h5 class="fw-bold mb-1">${movie.title}</h5>
+                        <p class="mb-1"><strong>Genre:</strong> ${movie.genre}</p>
+                        <p class="mb-1"><strong>Format:</strong> ${movie.type.join(', ') || 'N/A'}</p>
+                        <p class="mb-1"><strong>Duration:</strong> ${movie.length}</p>
+                        <p class="mb-1"><strong>Showtimes:</strong> ${movie.showtimes.join(', ')}</p>
+                        <p class="mb-0"><strong>Date:</strong> ${movie.date}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>`;
+              movieContainer.innerHTML += movieCard;
+            });
+          });
+      }
     });
 
     function toggleFavorite(element) {

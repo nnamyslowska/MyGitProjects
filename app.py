@@ -172,7 +172,7 @@ def register():
 
 @app.route('/filter-movies', methods=['GET'])
 def filter_movies():
-    genre = request.args.get('genre', 'all').lower()
+    genre = request.args.get('genre', '').lower()
     date = request.args.get('date')
 
     # Load the JSON data
@@ -180,17 +180,13 @@ def filter_movies():
         movies = json.load(f)
 
     # Filter movies by genre and date
-    filtered_movies = []
-    for idx, movie in enumerate(movies):
-        movie_genres = [g.strip().lower() for g in movie['genre'].split(',')]
-        if (genre == 'all' or genre in movie_genres) and (not date or movie['date'] == date):
-            movie['id'] = idx  # Assign a unique ID
-            filtered_movies.append(movie)
+    filtered_movies = [
+        movie for movie in movies
+        if (not genre or genre in movie['genre'].lower()) and (not date or movie['date'] == date)
+    ]
 
-    if not filtered_movies:
-        return jsonify({"movies": [], "message": f"No movies found for the selected genre(s) on {date}."})
-
-    return jsonify({"movies": filtered_movies})
+    # Return the filtered movies and the date
+    return jsonify({"movies": filtered_movies, "date": date})
 
 @app.route("/my-movies")
 def my_movies():
