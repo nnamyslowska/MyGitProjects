@@ -124,6 +124,13 @@ def dashboard():
     with open('cinemacity_scraper/cinema_bemowo_movies_today_fromPyCharm.json', 'r', encoding='utf-8') as f:
         movies = json.load(f)
 
+    # Extract all unique genres from the entire dataset
+    all_genres = set()
+    for movie in movies:
+        genres = movie.get('genre', '')
+        genres = [genre.strip() for genre in genres.split(',')]  # Normalize and split
+        all_genres.update(genres)  # Add genres to the set
+
     # Get today's date
     today_date = date.today().strftime('%Y-%m-%d')
 
@@ -134,8 +141,10 @@ def dashboard():
             movie['id'] = idx  # Assign a unique ID
             filtered_movies.append(movie)
 
-    # Pass the filtered movies and today's date to the template
-    return render_template('dashboard.html', movies=filtered_movies, today_date=today_date)
+    print(all_genres)  # Debug: Print all unique genres to the console
+
+    # Pass the filtered movies, today's date, and all genres to the template
+    return render_template('dashboard.html', movies=filtered_movies, today_date=today_date, all_genres=sorted(all_genres))
 
 @app.route('/login', methods=['GET', 'POST'])   
 def login():
@@ -172,7 +181,8 @@ def register():
 
 @app.route('/filter-movies', methods=['GET'])
 def filter_movies():
-    genre = request.args.get('genre', '').lower()
+    genres = request.args.get('genres', '').split(',')
+    genres = [genre.strip().lower() for genre in genres if genre.strip()]
     date = request.args.get('date')
 
     # Load the JSON data
@@ -182,7 +192,7 @@ def filter_movies():
     # Filter movies by genre and date
     filtered_movies = [
         movie for movie in movies
-        if (not genre or genre in movie['genre'].lower()) and (not date or movie['date'] == date)
+        if (not genres or any(genre in movie['genre'].lower() for genre in genres)) and (not date or movie['date'] == date)
     ]
 
     # Return the filtered movies and the date

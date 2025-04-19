@@ -212,3 +212,37 @@ small {
 .bg-darker {
   background-color: #101010 !important; /* Ciemniejszy odcień czarnego */
 }
+
+#genre-badges {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.badge {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+#filter-btn {
+  margin-top: 10px;
+}
+
+.short-date {
+  width: 250px; /* Shorten the date input */
+}
+
+.filter-btn {
+  width: 150px; /* Make the Filter Movies button 50% shorter */
+}
+
+.dropdown-menu {
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.genre-dropdown {
+  width: 350px; /* Set the width of the Select Genre container */
+}
