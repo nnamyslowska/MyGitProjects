@@ -126,6 +126,37 @@ movie-card button:hover {
   background-color: #ffdd33;
 }
 
+/* Card */
+.card {
+  background-color: #1c1c1c;
+  border: none;
+  border-radius: 10px;
+}
+
+.card img {
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  color: #b0b0b0;
+  margin-bottom: 5px;
+}
+
+.bi-star {
+  cursor: pointer;
+}
+
 /* Footer */
 footer {
   text-align: center;

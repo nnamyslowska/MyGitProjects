@@ -7,6 +7,7 @@ from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Length, ValidationError
 from flask_bcrypt import Bcrypt
 import json
+from datetime import date
 
 
 app = Flask(__name__)
@@ -119,8 +120,22 @@ current_user_data = {"username": "current_user", "genres": ["Action", "Comedy"]}
 
 @app.route('/')
 def dashboard():
-    # Pass available movies to the dashboard
-    return render_template('dashboard.html', movies=available_movies)
+    # Load the JSON data
+    with open('cinemacity_scraper/cinema_bemowo_movies_today_fromPyCharm.json', 'r', encoding='utf-8') as f:
+        movies = json.load(f)
+
+    # Get today's date
+    today_date = date.today().strftime('%Y-%m-%d')
+
+    # Filter movies by today's date and assign unique IDs
+    filtered_movies = []
+    for idx, movie in enumerate(movies):
+        if movie.get('date') == today_date:
+            movie['id'] = idx  # Assign a unique ID
+            filtered_movies.append(movie)
+
+    # Pass the filtered movies and today's date to the template
+    return render_template('dashboard.html', movies=filtered_movies, today_date=today_date)
 
 @app.route('/login', methods=['GET', 'POST'])   
 def login():
@@ -166,10 +181,14 @@ def filter_movies():
 
     # Filter movies by genre and date
     filtered_movies = []
-    for movie in movies:
+    for idx, movie in enumerate(movies):
         movie_genres = [g.strip().lower() for g in movie['genre'].split(',')]
         if (genre == 'all' or genre in movie_genres) and (not date or movie['date'] == date):
+            movie['id'] = idx  # Assign a unique ID
             filtered_movies.append(movie)
+
+    if not filtered_movies:
+        return jsonify({"movies": [], "message": f"No movies found for the selected genre(s) on {date}."})
 
     return jsonify({"movies": filtered_movies})
 
