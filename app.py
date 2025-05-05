@@ -9,6 +9,19 @@ from flask_bcrypt import Bcrypt
 import json
 from datetime import date
 
+# --- favourites persistence (no DB needed) ------------------
+import os, json
+FAVES_FILE = 'user_favorites.json'
+
+def load_faves() -> dict:
+    if os.path.exists(FAVES_FILE):
+        with open(FAVES_FILE, 'r', encoding='utf-8') as fh:
+            return json.load(fh)
+    return {}
+
+def save_faves(data: dict):
+    with open(FAVES_FILE, 'w', encoding='utf-8') as fh:
+        json.dump(data, fh, ensure_ascii=False, indent=2)
 
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
@@ -213,6 +226,13 @@ def add_to_list():
     if movie_title not in favorites:
         favorites.append(movie_title)
     session['favorites'] = favorites
+    
+    # also store it globally so we can match between users
+    if current_user.is_authenticated:                       # requires flask_login import
+        data = load_faves()
+        data[current_user.username] = favorites
+        save_faves(data)
+        
     return jsonify(success=True)
 
 @app.route('/remove-from-list', methods=['POST'])
@@ -225,14 +245,36 @@ def remove_from_list():
     return jsonify(success=True)
 
 @app.route('/match')
+@login_required
 def match():
-    # Find matched users based on shared genres
-    matched_users = []
-    for user in users:
-        shared_genres = set(current_user_data["genres"]) & set(user["genres"])
-        if shared_genres:
-            matched_users.append({"username": user["username"], "shared_genres": list(shared_genres)})
-    return render_template("match.html", matched_users=matched_users)
+    # 1. our favourites ➜ the set of our genres
+    my_titles = session.get('favorites', [])
+    with open('cinemacity_scraper/cinema_bemowo_movies_today_fromPyCharm.json', encoding='utf-8') as f:
+        all_movies = {m['title']: m for m in json.load(f)}
+
+    def titles_to_genres(titles):
+        genres = set()
+        for t in titles:
+            g = all_movies.get(t, {}).get('genre', '')
+            for part in g.split(','):
+                genres.add(part.strip())
+        return genres
+
+    my_genres = titles_to_genres(my_titles)
+
+    # 2. every other user ➜ intersection of genres
+    matches = []
+    for user, titles in load_faves().items():
+        if user == current_user.username:
+            continue
+        shared = my_genres & titles_to_genres(titles)
+        if shared:
+            matches.append({
+                'username': user,
+                'common': ', '.join(sorted(shared))
+            })
+
+    return render_template('match.html', matches=matches)
 
 @app.route("/match-with/<username>")
 def match_with(username):
