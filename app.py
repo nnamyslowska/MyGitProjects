@@ -200,33 +200,29 @@ def filter_movies():
 
 @app.route("/my-movies")
 def my_movies():
-    # Get favorite movie IDs or titles from the session
-    favorite_movie_ids = session.get("favorites", [])
-    
-    # Safely filter movies by checking if "id" exists or matching on "title"
-    favorite_movies = [
-        movie for movie in available_movies
-        if ("id" in movie and movie["id"] in favorite_movie_ids) or
-           ("title" in movie and movie["title"] in favorite_movie_ids)
-    ]
-    
-    return render_template("my_movies.html", favorite_movies=favorite_movies)
+    favorites = session.get('favorites', [])
+    with open('cinemacity_scraper/cinema_bemowo_movies_today_fromPyCharm.json', encoding='utf-8') as f:
+        all_movies = json.load(f)
+    favorite_movies = [m for m in all_movies if m['title'] in favorites]
+    return render_template('my_movies.html', favorite_movies=favorite_movies)
 
-@app.route('/toggle-favorite', methods=['POST'])
-def toggle_favorite():
-    # Toggle a movie's favorite status
-    movie_id = request.json.get("movie_id")
-    if "favorites" not in session:
-        session["favorites"] = []
-    favorites = session["favorites"]
+@app.route('/add-to-list', methods=['POST'])
+def add_to_list():
+    movie_title = request.json.get('movie_title')
+    favorites = session.get('favorites', [])
+    if movie_title not in favorites:
+        favorites.append(movie_title)
+    session['favorites'] = favorites
+    return jsonify(success=True)
 
-    if movie_id in favorites:
-        favorites.remove(movie_id)  # Remove from favorites
-    else:
-        favorites.append(movie_id)  # Add to favorites
-
-    session["favorites"] = favorites
-    return jsonify({"success": True, "favorites": favorites})
+@app.route('/remove-from-list', methods=['POST'])
+def remove_from_list():
+    movie_title = request.json.get('movie_title')
+    favorites = session.get('favorites', [])
+    if movie_title in favorites:
+        favorites.remove(movie_title)
+        session['favorites'] = favorites
+    return jsonify(success=True)
 
 @app.route('/match')
 def match():

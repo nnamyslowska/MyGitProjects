@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Movies</title>
+  <title>My Movies - CineMatch</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
@@ -17,7 +17,7 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link text-white" href="/">Dashboard</a>
+            <a class="nav-link text-white" href="{{ url_for('dashboard') }}">Dashboard</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" href="{{ url_for('match') }}">Match</a>
@@ -30,29 +30,66 @@
     </div>
   </nav>
 
-  <!-- Main Content -->
   <div class="container mt-4">
-    <h1 class="text-center fw-bold mb-4">My Movies</h1>
-    {% if favorite_movies %}
-      {% for movie in favorite_movies %}
-      <div class="card text-white shadow-sm mb-3">
-        <div class="card-body d-flex justify-content-between align-items-center">
-          <div>
-            <h5 class="fw-bold mb-1">{{ movie.title }}</h5>
-            <p class="mb-0 text-white-50">{{ movie.genre }} • {{ movie.duration }}, {{ movie.format }}</p>
+    <h1 class="text-center text-white fw-bold mb-4">My Movies</h1>
+    <div class="row g-4">
+      {% if favorite_movies %}
+        {% for movie in favorite_movies %}
+        <div class="col-12 col-md-6">
+          <div class="card text-white shadow-sm position-relative" style="max-width: 100%;">
+            <!-- Remove from List button -->
+            <button class="btn btn-danger btn-sm position-absolute top-0 end-0 m-2"
+                    data-movie-title="{{ movie.title }}"
+                    onclick="removeFromList(this)">
+              Remove
+            </button>
+            <div class="card-body d-flex p-2">
+              <img src="{{ movie.image_url }}" alt="{{ movie.title }}" 
+                   class="me-3 flex-shrink-0" style="width: 160px; object-fit: cover;">
+              <div class="text-start">
+                <h5 class="fw-bold mb-1">{{ movie.title }}</h5>
+                <p class="mb-1"><strong>Genre:</strong> {{ movie.genre }}</p>
+                <p class="mb-1"><strong>Format:</strong> {{ movie.type | join(', ') }}</p>
+                <p class="mb-1"><strong>Duration:</strong> {{ movie.length }}</p>
+                <p class="mb-1"><strong>Showtimes:</strong> {{ movie.showtimes | join(', ') }}</p>
+                <p class="mb-0"><strong>Date:</strong> {{ movie.date }}</p>
+              </div>
+            </div>
           </div>
-          <i class="bi bi-star-fill"></i>
         </div>
-      </div>
-      {% endfor %}
-    {% else %}
-      <p class="text-center text-white">No favorite movies to display.</p>
-    {% endif %}
+        {% endfor %}
+      {% else %}
+        <p class="text-center text-white">No favourites yet – go add some!</p>
+      {% endif %}
+    </div>
   </div>
 
   <!-- Footer -->
   <footer class="text-center mt-4 text-white-50">
     <p>© 2025 CineMatch. All rights reserved.</p>
   </footer>
+
+  <script>
+    function removeFromList(btn) {
+      const movieTitle = btn.dataset.movieTitle;
+      fetch('/remove-from-list', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ movie_title: movieTitle })
+      })
+      .then(r => r.json())
+      .then(({ success }) => {
+        if (success) {
+          // Remove the whole movie card
+          btn.closest('.col-12').remove();
+          // If no movies left, show the empty message
+          if (document.querySelector('.col-12') === null) {
+            document.querySelector('.row').innerHTML = 
+              '<p class="text-center text-white">No favourites yet – go add some!</p>';
+          }
+        }
+      });
+    }
+  </script>
 </body>
 </html>
