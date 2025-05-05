@@ -169,6 +169,12 @@ def login():
         if user:
             if bcrypt.check_password_hash(user.password, form.password.data):
                 login_user(user)
+
+                # ---------- NEW: pull this user's saved list into the session ----------
+                data = load_faves()                         # uses helper from top of file
+                session['favorites'] = data.get(user.username, [])
+                # -----------------------------------------------------------------------
+
                 return redirect(url_for('dashboard'))
         else:
             flash("Invalid credentials, please try again.", "danger")
@@ -178,6 +184,7 @@ def login():
 @login_required
 def logout():
     logout_user()
+    session.pop('favorites', None)      # forget whatever was in the browser session
     flash("You have been logged out.", "info")
     return redirect(url_for('login'))
 
@@ -242,6 +249,14 @@ def remove_from_list():
     if movie_title in favorites:
         favorites.remove(movie_title)
         session['favorites'] = favorites
+
+        # ---------- NEW: persist change for this user ----------
+        if current_user.is_authenticated:
+            data = load_faves()
+            data[current_user.username] = favorites
+            save_faves(data)
+        # -------------------------------------------------------
+
     return jsonify(success=True)
 
 @app.route('/match')
